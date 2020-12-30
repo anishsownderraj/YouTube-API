@@ -68,15 +68,20 @@ minutes_ex = re.compile(r'(\d+)M')
 seconds_ex = re.compile(r'(\d+)S')
 hours_ex = re.compile(r'(\d+)H')
 
+# Dict to store key:duration of video value: title of video
 video_dict = {}
+# List of times of each video
 times = []
 total_seconds = 0
-i = 0
+item = 0
+
+# Returns expressions that match our regex pattern
 for vid_id in response_video_id['items']:
     minutes = minutes_ex.search(vid_id['contentDetails']['duration'])
     seconds = seconds_ex.search(vid_id['contentDetails']['duration'])
     hours = hours_ex.search(vid_id['contentDetails']['duration'])
 
+    # Converts regex expression to just int
     if hours:
         hours = int(hours.group(1))
     else:
@@ -92,16 +97,21 @@ for vid_id in response_video_id['items']:
     else:
         seconds = 0
 
+    # Obtains the total seconds of each video
     video_time_seconds = timedelta(hours=hours,minutes= minutes,seconds= seconds).total_seconds()
+
+    # Adds each video seconds to list
     times.append(int(video_time_seconds))
 
-    video_dict[int(video_time_seconds)] = response_videos['items'][i]['snippet']['title']
+    # Adds key:duration of video value: title of video
+    video_dict[int(video_time_seconds)] = response_videos['items'][item]['snippet']['title']
     i+=1
 
+    # Adds the total_seconds of each iteration
     total_seconds += video_time_seconds
       
 
-
+# 
 minutes, seconds = divmod(int(total_seconds),60)
 hours, minutes = divmod(minutes,60)
 
@@ -113,10 +123,6 @@ shortest_vid = min(times)
 print("Longest Video of the Playlist is: {}".format(video_dict[longest_vid]))
 print("Shortest Video of the Playlist is: {}".format(video_dict[shortest_vid]))
 
-
-# for i in response_videos['items']:
-#     print("\n")
-#     print(i)
 
 
 
