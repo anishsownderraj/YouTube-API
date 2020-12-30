@@ -111,12 +111,13 @@ for vid_id in response_video_id['items']:
     total_seconds += video_time_seconds
       
 
-# 
+# Converts our total seconds to hours, minutes, seconds
 minutes, seconds = divmod(int(total_seconds),60)
 hours, minutes = divmod(minutes,60)
 
 print("Total Duration: {}H {}M {}S".format(hours, minutes,seconds))
 
+# Gets the max and min time
 longest_vid = max(times)
 shortest_vid = min(times)
 
