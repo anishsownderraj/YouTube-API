@@ -9,7 +9,7 @@ API_KEY = 'AIzaSyCJSdKsZYS7UR13HO394SVsmhXWGCwFySY'
 # Service Object
 yt_object = build('youtube','v3',developerKey=API_KEY)
 
-print("Enter the username of an Youtuber(Possible suggestions are 'PewDiePie):")
+print("Enter the username of an Youtuber(Possible suggestions are 'PewDiePie'):")
 
 # YouTube username
 username = input()
@@ -105,7 +105,7 @@ for vid_id in response_video_id['items']:
 
     # Adds key:duration of video value: title of video
     video_dict[int(video_time_seconds)] = response_videos['items'][item]['snippet']['title']
-    i+=1
+    item+=1
 
     # Adds the total_seconds of each iteration
     total_seconds += video_time_seconds
