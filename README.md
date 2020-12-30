@@ -9,7 +9,7 @@ Created an application that manipulates data from the YouTube API to provide inf
 ## Instructions
 1. Clone the Repository using the URL
 ```sh
-$ git clone https://github.com/anishsownderraj/Sudoku-Solver
+$ git clone https://github.com/anishsownderraj/YouTube-API
 ```
 2. Set up an virtual environment(found below)
 
