@@ -80,7 +80,6 @@ PC Tech Support Challenge
 Total Duration: 5H 23M 47S
 Longest Video of the Playlist is: ULTIMATE RGB PC Tech Support Challenge!!
 Shortest Video of the Playlist is: ULTIMATE PC Tech Support Challenge - Jayztwocents vs Gamers Nexus
-(venv) anishsownderraj@Anishs-MBP Youtube-API % 
 ```
 ### Tests of your Own
 A YouTuber's username is found at the end of the URL of a YouTubers Home Page
