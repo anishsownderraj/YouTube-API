@@ -71,6 +71,7 @@ hours_ex = re.compile(r'(\d+)H')
 video_dict = {}
 times = []
 total_seconds = 0
+i = 0
 for vid_id in response_video_id['items']:
     minutes = minutes_ex.search(vid_id['contentDetails']['duration'])
     seconds = seconds_ex.search(vid_id['contentDetails']['duration'])
@@ -92,24 +93,30 @@ for vid_id in response_video_id['items']:
         seconds = 0
 
     video_time_seconds = timedelta(hours=hours,minutes= minutes,seconds= seconds).total_seconds()
-    times.append(int(video_time_seconds)
+    times.append(int(video_time_seconds))
 
-    video_dict['title'] = 10
+    video_dict[int(video_time_seconds)] = response_videos['items'][i]['snippet']['title']
+    i+=1
 
     total_seconds += video_time_seconds
-      video_dict['title'] = 10
+      
 
 
 minutes, seconds = divmod(int(total_seconds),60)
 hours, minutes = divmod(minutes,60)
 
-print("{}H {}M {}S".format(hours, minutes,seconds))
-print("Longest Video in {}".format(playlist_id))
-print("Shortes Video in {}".format(playlist_id))
+print("Total Duration: {}H {}M {}S".format(hours, minutes,seconds))
 
-for i in response_videos['items']:
-    print("\n")
-    print(i)
+longest_vid = max(times)
+shortest_vid = min(times)
+
+print("Longest Video of the Playlist is: {}".format(video_dict[longest_vid]))
+print("Shortest Video of the Playlist is: {}".format(video_dict[shortest_vid]))
+
+
+# for i in response_videos['items']:
+#     print("\n")
+#     print(i)
 
 
 
